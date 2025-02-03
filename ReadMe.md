@@ -118,6 +118,7 @@ __Canva__ utilizado para el diseño de todos los logos, packs de comida, promoci
 ### Acciones del Usuario
 
 ### Registro del usuario en la app
+
 graph TD;
     A[Inicio] --> B[Usuario ingresa datos];
     B --> C{¿Datos válidos?};
@@ -132,6 +133,7 @@ graph TD;
     F -- No --> H[Guardar usuario en la base de datos];
     H --> I[Muestra mensaje de éxito];
     I --> J[Fin];
+
 
 ### Inicio de sesión del usuario en la app
 
@@ -186,6 +188,19 @@ graph TD;
 
 ### Compra del usuario de una butaca para una película
 
+graph TD;
+    A[Inicio] --> B[El usuario selecciona película, función y butaca]
+    B --> C{¿Butaca disponible?}
+    C -- No --> D[Mostrar mensaje de error] --> E[Fin]
+    C -- Sí --> F[Reservar temporalmente la butaca]
+    F --> G[El usuario ingresa datos de pago]
+    G --> H[Procesar pago]
+    H --> I{¿Pago aprobado?}
+    I -- No --> J[Cancelar reserva de butaca] --> D
+    I -- Sí --> K[Confirmar compra y generar ticket]
+    K --> L[Mostrar ticket al usuario]
+    L --> E
+
 
 
 # Diagramas de Secuencia
@@ -215,28 +230,150 @@ sequenceDiagram
 
 ### Diagrama de inicio de sesión de un usuario en la app
 
+    participant Usuario
+    participant App
+    participant Servidor
+    participant BaseDeDatos
+
+    Usuario->>App: Ingresa credenciales
+    App->>Servidor: Envía credenciales
+    Servidor->>BaseDeDatos: Verifica credenciales
+    BaseDeDatos-->>Servidor: Respuesta (válidas/inválidas)
+    
+    alt Credenciales válidas
+        Servidor-->>App: Autenticación exitosa
+        App-->>Usuario: Muestra pantalla de inicio
+    else Credenciales inválidas
+        Servidor-->>App: Error - Credenciales incorrectas
+        App-->>Usuario: Muestra mensaje de error
+    end
+
+### Diagrama de compra de una butaca
+    participant Usuario
+    participant App
+    participant Servidor
+    participant BaseDeDatos
+    participant PasarelaDePago
+
+    Usuario->>App: Selecciona película, función y butaca
+    App->>Servidor: Envía solicitud de reserva
+    Servidor->>BaseDeDatos: Verifica disponibilidad de la butaca
+    BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
+    
+    alt Butaca disponible
+        Servidor->>BaseDeDatos: Reserva temporalmente la butaca
+        Servidor-->>App: Solicita confirmación de pago
+        Usuario->>App: Ingresa datos de pago
+        App->>PasarelaDePago: Procesa pago
+        PasarelaDePago-->>Servidor: Pago aprobado/rechazado
+        
+        alt Pago aprobado
+            Servidor->>BaseDeDatos: Confirma compra y guarda ticket
+            BaseDeDatos-->>Servidor: Compra registrada
+            Servidor-->>App: Confirmación de compra
+            App-->>Usuario: Muestra ticket y detalles de compra
+        else Pago rechazado
+            Servidor->>BaseDeDatos: Cancela reserva de butaca
+            Servidor-->>App: Error - Pago rechazado
+            App-->>Usuario: Muestra mensaje de error
+        end
+    else Butaca no disponible
+        Servidor-->>App: Error - Butaca no disponible
+        App-->>Usuario: Muestra mensaje de error
+    end
+
+### Diagramad de compra de una promocion
+
+ participant Usuario
+    participant App
+    participant Servidor
+    participant BaseDeDatos
+    participant PasarelaDePago
+
+    Usuario->>App: Selecciona promocion
+    App->>Servidor: Envía solicitud de reserva
+    Servidor->>BaseDeDatos: Verifica disponibilidad de la promocion
+    BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
+    
+    alt promocion disponible
+        Servidor->>BaseDeDatos: Compra temporalmente la promocion
+        Servidor-->>App: Solicita confirmación de pago
+        Usuario->>App: Ingresa datos de pago
+        App->>PasarelaDePago: Procesa pago
+        PasarelaDePago-->>Servidor: Pago aprobado/rechazado
+        
+        alt Pago aprobado
+            Servidor->>BaseDeDatos: Confirma compra y guarda ticket
+            BaseDeDatos-->>Servidor: Compra registrada
+            Servidor-->>App: Confirmación de compra
+            App-->>Usuario: Muestra ticket y detalles de compra
+        else Pago rechazado
+            Servidor->>BaseDeDatos: Cancela compra de promocion
+            Servidor-->>App: Error - Pago rechazado
+            App-->>Usuario: Muestra mensaje de error
+        end
+    else promocion no disponible
+        Servidor-->>App: Error - promocion no disponible
+        App-->>Usuario: Muestra mensaje de error
+    end
+
+### Diagrama de compra de un pack de comida
+
+ participant Usuario
+    participant App
+    participant Servidor
+    participant BaseDeDatos
+    participant PasarelaDePago
+
+    Usuario->>App: Selecciona pack de comida
+    App->>Servidor: Envía solicitud de reserva
+    Servidor->>BaseDeDatos: Verifica disponibilidad de la pack de comida
+    BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
+    
+    alt pack de comida disponible
+        Servidor->>BaseDeDatos: Compra temporalmente la pack de comida
+        Servidor-->>App: Solicita confirmación de pago
+        Usuario->>App: Ingresa datos de pago
+        App->>PasarelaDePago: Procesa pago
+        PasarelaDePago-->>Servidor: Pago aprobado/rechazado
+        
+        alt Pago aprobado
+            Servidor->>BaseDeDatos: Confirma compra y guarda ticket
+            BaseDeDatos-->>Servidor: Compra registrada
+            Servidor-->>App: Confirmación de compra
+            App-->>Usuario: Muestra ticket y detalles de compra
+        else Pago rechazado
+            Servidor->>BaseDeDatos: Cancela compra de pack de comida
+            Servidor-->>App: Error - Pago rechazado
+            App-->>Usuario: Muestra mensaje de error
+        end
+    else pack de comida no disponible
+        Servidor-->>App: Error - pack de comida no disponible
+        App-->>Usuario: Muestra mensaje de error
+    end
 
 # Diagramas de entidad Relacion
 
+### Diagrama de registro
+
 erDiagram
 
-    Película {
-        string id_producto
+    Usuario || --o{ Registro : realiza
+
+    Usuario {
+
+        int id_usuario
         string nombre
-        string id_actor
-        string id_director
-        
+        string email
+        string contraseña
     }
 
-    USUARIO {
-        string id_usuario
-        string nombre
-        string direccion
+    Registro{
+
+        int id_registro
+        int id_usuario
+        strign estado
+
     }
-    PEDIDO {
-        string id_pedido
-        string id_usuario
-        string id_producto
-    }
-    USUARIO ||--o{ PEDIDO : "compra"
-    PRODUCTO }o--|| PEDIDO : "venta"
+
+}
