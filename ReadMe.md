@@ -1,6 +1,6 @@
 # Cine360
 
-## ¿Qué es cine 360?
+## ¿Qué es cine 360?📘
 
 El proyecto consta de una innovadora idea la cual consiste en la implementación de 7 películas por semana (1 por día), estas tienen una temática concreta que en este caso son los diferentes géneros de cine.(De esta forma se le da sentido al nombre del proyecto ya que realiza un viaje 360 con los diferentes géneros de cine.)
 
@@ -12,15 +12,11 @@ Dentro de la aplicación tendremos dos grupos de usuarios los cuales tendran dif
 
 El usuario podra relizar diferentes funciones las cuales se van a enumerar y posteriormente explicar:
 
-1. Registrarse.
-2. Iniciar Sesión.
-3. Realizar cambios en su perfil.
-4. Navegar por todas las ventanas.
-5. Visualizar las películas disponibles.
-6. Reservar bútacas para asistir a la visualización de la película.
-7. Comprar packs de comida.
-8. Comprar promociones.
-9. Devolver productos adquiridos.
+| Acciones Básicas |Acciones de Compras |  Devolver|
+|----------------|----------------------|-------------------------|
+| Registrares    | Comprar Promociones  | Devolver Promociones |
+| Iniciar Sesión | Comprar Packs de comida| Devolver Packs de comida|
+|Modificar Perfil| Comprar Butacas      |   Devolver Butacas| 
 
 ## Explicación de las acciones del usuario
 
@@ -87,7 +83,7 @@ En __noveno lugar__ tenemos la acción de modificar  __directores__, esta acció
 En __décimo lugar__ tenemos la acción de modificar  __actores__, esta acción le permitira al administrador modificar la información acerca de las diferentes actores disponibles en la app.
 
 
-# ¿Qué herramientos y lenguajes he utilizado para su desarrollo?
+# ¿Qué herramientos y lenguajes he utilizado para su desarrollo? 💻
 
 Para el desarrollo de este proyecto he utilizado diferentes herramientas las cuales inidcare ahora y explicare que funciones tienen.
 
@@ -103,10 +99,11 @@ __Sqlite__ es una base de datos.
 
 ### Herramientas usadas para el desarrollo
 
-- Android Studio
-- Figma
-- GitHub
-- Canva
+| Entorno de desarrollo | MokUps |  Control de Versiones|
+|----------------|---------------|---------------------- |
+| Androdi Studio        | Figma  |  Github |
+
+
 
 __Andorid Studio__ es un IDE utilizado principalmete para el desarrollo de aplicaciones orientadas a los usuarios de móvil, además permite la creación de la base de datos.
 
@@ -115,3 +112,131 @@ __Figma__ es una herramienta _on-line_ utilizada para el diseño de los mockups 
 __GitHub__ sistema de contol de versiones _on-line_ utilizado para poder realizar todo tipo de pruebas y realizar el desarrollo de la app mediante la creación de diferentes _ramas_ las cuales en caso de fallar no seria un problema gracias al guardado de versiones y en ningún momento se veria afectado el proyecto final.
 
 __Canva__ utilizado para el diseño de todos los logos, packs de comida, promociones.
+
+# Diagrama de Flujo
+
+### Acciones del Usuario
+
+### Registro del usuario en la app
+graph TD;
+    A[Inicio] --> B[Usuario ingresa datos];
+    B --> C{¿Datos válidos?};
+    
+    C -- No --> D[Muestra mensaje de error] --> B;
+    
+    C -- Sí --> E[Enviar datos al servidor];
+    E --> F{¿Usuario ya registrado?};
+    
+    F -- Sí --> G[Muestra mensaje de error] --> B;
+    
+    F -- No --> H[Guardar usuario en la base de datos];
+    H --> I[Muestra mensaje de éxito];
+    I --> J[Fin];
+
+### Inicio de sesión del usuario en la app
+
+graph TD;
+    A[Inicio] --> B[Escribe tu contraseña];
+    B --> C((Variable: pass));
+    C --> D{¿Contraseña correcta?};
+    
+    D -- Sí --> E[Login correcto];
+    D -- No --> F[Intentar de nuevo];
+    
+    F --> B; 
+    E --> G[(Fin)];
+
+### Compra del usuario de una promoción
+
+graph TD;
+    A[Inicio - Index] --> B[Usuario navega a Promociones];
+    B --> C[Muestra lista de promociones];
+    C --> D[Usuario selecciona una promoción];
+    D --> E{¿Está disponible?};
+
+    E -- No --> F[Muestra mensaje: No disponible] --> C;
+    E -- Sí --> G[Usuario agrega promoción al carrito];
+    
+    G --> H[Usuario procede al pago];
+    H --> I{¿Pago exitoso?};
+
+    I -- No --> J[Muestra error de pago] --> H;
+    I -- Sí --> K[Compra confirmada];
+    
+    K --> L[(Fin)];
+
+### Compra del usuario de un pack de comida
+
+graph TD;
+    A[Inicio - Index] --> B[Usuario navega a Packs de comida];
+    B --> C[Muestra lista de packs de comida];
+    C --> D[Usuario selecciona un pack de comida];
+    D --> E{¿Está disponible?};
+
+    E -- No --> F[Muestra mensaje: No disponible] --> C;
+    E -- Sí --> G[Usuario agrega pack de comida al carrito];
+    
+    G --> H[Usuario procede al pago];
+    H --> I{¿Pago exitoso?};
+
+    I -- No --> J[Muestra error de pago] --> H;
+    I -- Sí --> K[Compra confirmada];
+    
+    K --> L[(Fin)];
+
+### Compra del usuario de una butaca para una película
+
+
+
+# Diagramas de Secuencia
+
+### Diagrama de registro de un usuario en la app
+
+sequenceDiagram
+    participant Usuario
+    participant App
+    participant Servidor
+    participant BaseDeDatos
+
+    Usuario->>App: Ingresa datos de registro
+    App->>Servidor: Envía datos de registro
+    Servidor->>BaseDeDatos: Verifica si el usuario ya existe
+    BaseDeDatos-->>Servidor: Respuesta (existe/no existe)
+    
+    alt Usuario no existe
+        Servidor->>BaseDeDatos: Guarda nuevos datos de usuario
+        BaseDeDatos-->>Servidor: Confirmación de guardado
+        Servidor-->>App: Registro exitoso
+        App-->>Usuario: Muestra mensaje de éxito
+    else Usuario ya existe
+        Servidor-->>App: Error - Usuario ya registrado
+        App-->>Usuario: Muestra mensaje de error
+    end
+
+### Diagrama de inicio de sesión de un usuario en la app
+
+
+# Diagramas de entidad Relacion
+
+erDiagram
+
+    Película {
+        string id_producto
+        string nombre
+        string id_actor
+        string id_director
+        
+    }
+
+    USUARIO {
+        string id_usuario
+        string nombre
+        string direccion
+    }
+    PEDIDO {
+        string id_pedido
+        string id_usuario
+        string id_producto
+    }
+    USUARIO ||--o{ PEDIDO : "compra"
+    PRODUCTO }o--|| PEDIDO : "venta"
