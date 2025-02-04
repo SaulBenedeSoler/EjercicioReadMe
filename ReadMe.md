@@ -4,7 +4,17 @@
 
 El proyecto consta de una innovadora idea la cual consiste en la implementación de 7 películas por semana (1 por día), estas tienen una temática concreta que en este caso son los diferentes géneros de cine.(De esta forma se le da sentido al nombre del proyecto ya que realiza un viaje 360 con los diferentes géneros de cine.)
 
-## ¿Que usuarios formaran parte de la aplicación?
+
+## ¿Qué metodología he utilizado para este desarrollo?
+
+Para el desarrollo de este proyecot he utilizado las metodologías ágiles, mas concretamente la metodología llamada __Scrum__, el motivo es que debido a las entregas que se nos piden que son en periodos de tiempo muy marcados y el material a entregar es conciso esto conbina perfectamente con los sprints, en los cuales puedo definir que objetivos quiero cumplir y cuales debo cumplir obligatoriamente para realizar la entrega de manera correcta.
+
+### Video acerca de Scrum
+[![alt text](image-3.png)]([URL_del_vídeo](https://www.youtube.com/watch?v=HhC75IonpOU))
+
+
+
+## ¿Que usuarios formaran parte de la aplicación? 🧑
 
 Dentro de la aplicación tendremos dos grupos de usuarios los cuales tendran diferentes acciones y funciones a realizar y estos seran __administrador__ y __usuario__.
 
@@ -113,142 +123,269 @@ __GitHub__ sistema de contol de versiones _on-line_ utilizado para poder realiza
 
 __Canva__ utilizado para el diseño de todos los logos, packs de comida, promociones.
 
-# Diagrama de Flujo
-
-### Acciones del Usuario
-
-### Registro del usuario en la app
-
-graph TD;
-    A[Inicio] --> B[Usuario ingresa datos];
-    B --> C{¿Datos válidos?};
-    
-    C -- No --> D[Muestra mensaje de error] --> B;
-    
-    C -- Sí --> E[Enviar datos al servidor];
-    E --> F{¿Usuario ya registrado?};
-    
-    F -- Sí --> G[Muestra mensaje de error] --> B;
-    
-    F -- No --> H[Guardar usuario en la base de datos];
-    H --> I[Muestra mensaje de éxito];
-    I --> J[Fin];
+# <center><p style="color:yellow;">Diagrama de Flujo</p></center>
 
 
-### Inicio de sesión del usuario en la app
-
-graph TD;
-    A[Inicio] --> B[Escribe tu contraseña];
-    B --> C((Variable: pass));
-    C --> D{¿Contraseña correcta?};
-    
-    D -- Sí --> E[Login correcto];
-    D -- No --> F[Intentar de nuevo];
-    
-    F --> B; 
-    E --> G[(Fin)];
-
-### Compra del usuario de una promoción
-
-graph TD;
-    A[Inicio - Index] --> B[Usuario navega a Promociones];
-    B --> C[Muestra lista de promociones];
-    C --> D[Usuario selecciona una promoción];
-    D --> E{¿Está disponible?};
-
-    E -- No --> F[Muestra mensaje: No disponible] --> C;
-    E -- Sí --> G[Usuario agrega promoción al carrito];
-    
-    G --> H[Usuario procede al pago];
-    H --> I{¿Pago exitoso?};
-
-    I -- No --> J[Muestra error de pago] --> H;
-    I -- Sí --> K[Compra confirmada];
-    
-    K --> L[(Fin)];
-
-### Compra del usuario de un pack de comida
-
-graph TD;
-    A[Inicio - Index] --> B[Usuario navega a Packs de comida];
-    B --> C[Muestra lista de packs de comida];
-    C --> D[Usuario selecciona un pack de comida];
-    D --> E{¿Está disponible?};
-
-    E -- No --> F[Muestra mensaje: No disponible] --> C;
-    E -- Sí --> G[Usuario agrega pack de comida al carrito];
-    
-    G --> H[Usuario procede al pago];
-    H --> I{¿Pago exitoso?};
-
-    I -- No --> J[Muestra error de pago] --> H;
-    I -- Sí --> K[Compra confirmada];
-    
-    K --> L[(Fin)];
-
-### Compra del usuario de una butaca para una película
-
-graph TD;
-    A[Inicio] --> B[El usuario selecciona película, función y butaca]
-    B --> C{¿Butaca disponible?}
-    C -- No --> D[Mostrar mensaje de error] --> E[Fin]
-    C -- Sí --> F[Reservar temporalmente la butaca]
-    F --> G[El usuario ingresa datos de pago]
-    G --> H[Procesar pago]
-    H --> I{¿Pago aprobado?}
-    I -- No --> J[Cancelar reserva de butaca] --> D
-    I -- Sí --> K[Confirmar compra y generar ticket]
-    K --> L[Mostrar ticket al usuario]
-    L --> E
+### <u> Registro del usuario en la app </u>
+```mermaid
+    graph TD
+        A[Inicio] --> B(Usuario ingresa datos)
+        B --> C{¿Datos válidos?};
+        C -- No --> D[Muestra mensaje de error];
+        D --> B;
+        C -- Sí --> E[Enviar datos al servidor];
+        E --> F{¿Usuario ya registrado?};
+        F -- Sí --> G[Muestra mensaje de error];
+        G --> B;
+        F -- No --> H[Guardar usuario en la base de datos];
+        H --> I[Muestra mensaje de éxito];
+        I --> J[Fin];
+```
 
 
+###  <u> Inicio de sesión del usuario en la app</u>
+```mermaid
+    graph TD 
+        A[Inicio] --> B[Escribe tu contraseña];
+        B --> C((Variable: pass));
+        C --> D{¿Contraseña correcta?};
+        
+        D -- Sí --> E[Login correcto];
+        D -- No --> F[Intentar de nuevo];
+        
+        F --> B; 
+        E --> G[(Fin)];
+```
 
-# Diagramas de Secuencia
+###  <u>Compra del usuario de una promoción</u>
 
-### Diagrama de registro de un usuario en la app
+```mermaid
+    graph TD;
+        A[Inicio - Index] --> B[Usuario navega a Promociones];
+        B --> C[Muestra lista de promociones];
+        C --> D[Usuario selecciona una promoción];
+        D --> E{¿Está disponible?};
 
+        E -- No --> F[Muestra mensaje: No disponible] --> C;
+        E -- Sí --> G[Usuario agrega promoción al carrito];
+        
+        G --> H[Usuario procede al pago];
+        H --> I{¿Pago exitoso?};
+
+        I -- No --> J[Muestra error de pago] --> H;
+        I -- Sí --> K[Compra confirmada];
+        
+        K --> L[(Fin)];
+```
+
+### <u>Compra del usuario de un pack de comida</u>
+
+```mermaid
+        graph TD;
+            A[Inicio - Index] --> B[Usuario navega a Packs de comida];
+            B --> C[Muestra lista de packs de comida];
+            C --> D[Usuario selecciona un pack de comida];
+            D --> E{¿Está disponible?};
+
+            E -- No --> F[Muestra mensaje: No disponible] --> C;
+            E -- Sí --> G[Usuario agrega pack de comida al carrito];
+            
+            G --> H[Usuario procede al pago];
+            H --> I{¿Pago exitoso?};
+
+            I -- No --> J[Muestra error de pago] --> H;
+            I -- Sí --> K[Compra confirmada];
+            
+            K --> L[(Fin)];
+```
+
+### <u>Compra del usuario de una butaca para una película</u>
+
+    graph TD;
+        A[Inicio] --> B[El usuario selecciona película, función y butaca]
+        B --> C{¿Butaca disponible?}
+        C -- No --> D[Mostrar mensaje de error] --> E[Fin]
+        C -- Sí --> F[Reservar temporalmente la butaca]
+        F --> G[El usuario ingresa datos de pago]
+        G --> H[Procesar pago]
+        H --> I{¿Pago aprobado?}
+        I -- No --> J[Cancelar reserva de butaca] --> D
+        I -- Sí --> K[Confirmar compra y generar ticket]
+        K --> L[Mostrar ticket al usuario]
+        L --> E
+
+
+
+# <center><p style="color:green;">Diagramas de Secuencia</p></center>
+
+### <u>Diagrama de registro de un usuario en la app</u>
+
+```mermaid
+    sequenceDiagram
+        participant Usuario
+        participant App
+        participant Servidor
+        participant BaseDeDatos
+
+        Usuario->>App: Ingresa datos de registro
+        App->>Servidor: Envía datos de registro
+        Servidor->>BaseDeDatos: Verifica si el usuario ya existe
+        BaseDeDatos-->>Servidor: Respuesta (existe/no existe)
+        
+        alt Usuario no existe
+            Servidor->>BaseDeDatos: Guarda nuevos datos de usuario
+            BaseDeDatos-->>Servidor: Confirmación de guardado
+            Servidor-->>App: Registro exitoso
+            App-->>Usuario: Muestra mensaje de éxito
+        else Usuario ya existe
+            Servidor-->>App: Error - Usuario ya registrado
+            App-->>Usuario: Muestra mensaje de error
+        end
+```
+
+### <u>Diagrama de inicio de sesión de un usuario en la app</u>
+
+```mermaid
+    sequenceDiagram
+        participant Usuario
+        participant App
+        participant Servidor
+        participant BaseDeDatos
+
+        Usuario->>App: Ingresa credenciales
+        App->>Servidor: Envía credenciales
+        Servidor->>BaseDeDatos: Verifica credenciales
+        BaseDeDatos-->>Servidor: Respuesta (válidas/inválidas)
+        
+        alt Credenciales válidas
+            Servidor-->>App: Autenticación exitosa
+            App-->>Usuario: Muestra pantalla de inicio
+        else Credenciales inválidas
+            Servidor-->>App: Error - Credenciales incorrectas
+            App-->>Usuario: Muestra mensaje de error
+        end
+```
+
+
+### <u>Diagrama de compra de una butaca</u>
+
+```mermaid
+        sequenceDiagram
+            participant Usuario
+            participant App
+            participant Servidor
+            participant BaseDeDatos
+            participant PasarelaDePago
+        
+            Usuario->>App: Selecciona película, función y butaca
+            App->>Servidor: Envía solicitud de reserva
+            Servidor->>BaseDeDatos: Verifica disponibilidad de la butaca
+            BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
+            
+            alt Butaca disponible
+                Servidor->>BaseDeDatos: Reserva temporalmente la butaca
+                Servidor-->>App: Solicita confirmación de pago
+                Usuario->>App: Ingresa datos de pago
+                App->>PasarelaDePago: Procesa pago
+                PasarelaDePago-->>Servidor: Pago aprobado/rechazado
+                
+                alt Pago aprobado
+                    Servidor->>BaseDeDatos: Confirma compra y guarda ticket
+                    BaseDeDatos-->>Servidor: Compra registrada
+                    Servidor-->>App: Confirmación de compra
+                    App-->>Usuario: Muestra ticket y detalles de compra
+                else Pago rechazado
+                    Servidor->>BaseDeDatos: Cancela reserva de butaca
+                    Servidor-->>App: Error - Pago rechazado
+                    App-->>Usuario: Muestra mensaje de error
+                end
+            else Butaca no disponible
+                Servidor-->>App: Error - Butaca no disponible
+                App-->>Usuario: Muestra mensaje de error
+            end
+```
+        
+        
+ ### <u>Diagrama de compra de una promocion</u>
+        
+ ```mermaid  
+ sequenceDiagram     
+         participant Usuario
+            participant App
+            participant Servidor
+            participant BaseDeDatos
+            participant PasarelaDePago
+        
+            Usuario->>App: Selecciona promocion
+            App->>Servidor: Envía solicitud de reserva
+            Servidor->>BaseDeDatos: Verifica disponibilidad de la promocion
+            BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
+            
+            alt promocion disponible
+                Servidor->>BaseDeDatos: Compra temporalmente la promocion
+                Servidor-->>App: Solicita confirmación de pago
+                Usuario->>App: Ingresa datos de pago
+                App->>PasarelaDePago: Procesa pago
+                PasarelaDePago-->>Servidor: Pago aprobado/rechazado
+                
+                alt Pago aprobado
+                    Servidor->>BaseDeDatos: Confirma compra y guarda ticket
+                    BaseDeDatos-->>Servidor: Compra registrada
+                    Servidor-->>App: Confirmación de compra
+                    App-->>Usuario: Muestra ticket y detalles de compra
+                else Pago rechazado
+                    Servidor->>BaseDeDatos: Cancela compra de promocion
+                    Servidor-->>App: Error - Pago rechazado
+                    App-->>Usuario: Muestra mensaje de error
+                end
+            else promocion no disponible
+                Servidor-->>App: Error - promocion no disponible
+                App-->>Usuario: Muestra mensaje de error
+            end
+```        
+        
+### <u>Diagrama de compra de un pack de comida</u>
+
+```mermaid      
+sequenceDiagram  
+         participant Usuario
+            participant App
+            participant Servidor
+            participant BaseDeDatos
+            participant PasarelaDePago
+        
+            Usuario->>App: Selecciona pack de comida
+            App->>Servidor: Envía solicitud de reserva
+            Servidor->>BaseDeDatos: Verifica disponibilidad de la pack de comida
+            BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
+            
+            alt pack de comida disponible
+                Servidor->>BaseDeDatos: Compra temporalmente la pack de comida
+                Servidor-->>App: Solicita confirmación de pago
+                Usuario->>App: Ingresa datos de pago
+                App->>PasarelaDePago: Procesa pago
+                PasarelaDePago-->>Servidor: Pago aprobado/rechazado
+                
+                alt Pago aprobado
+                    Servidor->>BaseDeDatos: Confirma compra y guarda ticket
+                    BaseDeDatos-->>Servidor: Compra registrada
+                    Servidor-->>App: Confirmación de compra
+                    App-->>Usuario: Muestra ticket y detalles de compra
+                else Pago rechazado
+                    Servidor->>BaseDeDatos: Cancela compra de pack de comida
+                    Servidor-->>App: Error - Pago rechazado
+                    App-->>Usuario: Muestra mensaje de error
+                end
+            else pack de comida no disponible
+                Servidor-->>App: Error - pack de comida no disponible
+                App-->>Usuario: Muestra mensaje de error
+            end
+```
+
+### <u>Diagrama de compra de una butaca</u>
+
+```mermaid
 sequenceDiagram
-    participant Usuario
-    participant App
-    participant Servidor
-    participant BaseDeDatos
-
-    Usuario->>App: Ingresa datos de registro
-    App->>Servidor: Envía datos de registro
-    Servidor->>BaseDeDatos: Verifica si el usuario ya existe
-    BaseDeDatos-->>Servidor: Respuesta (existe/no existe)
-    
-    alt Usuario no existe
-        Servidor->>BaseDeDatos: Guarda nuevos datos de usuario
-        BaseDeDatos-->>Servidor: Confirmación de guardado
-        Servidor-->>App: Registro exitoso
-        App-->>Usuario: Muestra mensaje de éxito
-    else Usuario ya existe
-        Servidor-->>App: Error - Usuario ya registrado
-        App-->>Usuario: Muestra mensaje de error
-    end
-
-### Diagrama de inicio de sesión de un usuario en la app
-
-    participant Usuario
-    participant App
-    participant Servidor
-    participant BaseDeDatos
-
-    Usuario->>App: Ingresa credenciales
-    App->>Servidor: Envía credenciales
-    Servidor->>BaseDeDatos: Verifica credenciales
-    BaseDeDatos-->>Servidor: Respuesta (válidas/inválidas)
-    
-    alt Credenciales válidas
-        Servidor-->>App: Autenticación exitosa
-        App-->>Usuario: Muestra pantalla de inicio
-    else Credenciales inválidas
-        Servidor-->>App: Error - Credenciales incorrectas
-        App-->>Usuario: Muestra mensaje de error
-    end
-
-### Diagrama de compra de una butaca
     participant Usuario
     participant App
     participant Servidor
@@ -281,99 +418,124 @@ sequenceDiagram
         Servidor-->>App: Error - Butaca no disponible
         App-->>Usuario: Muestra mensaje de error
     end
+```
 
-### Diagramad de compra de una promocion
 
- participant Usuario
-    participant App
-    participant Servidor
-    participant BaseDeDatos
-    participant PasarelaDePago
+www
 
-    Usuario->>App: Selecciona promocion
-    App->>Servidor: Envía solicitud de reserva
-    Servidor->>BaseDeDatos: Verifica disponibilidad de la promocion
-    BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
-    
-    alt promocion disponible
-        Servidor->>BaseDeDatos: Compra temporalmente la promocion
-        Servidor-->>App: Solicita confirmación de pago
-        Usuario->>App: Ingresa datos de pago
-        App->>PasarelaDePago: Procesa pago
-        PasarelaDePago-->>Servidor: Pago aprobado/rechazado
-        
-        alt Pago aprobado
-            Servidor->>BaseDeDatos: Confirma compra y guarda ticket
-            BaseDeDatos-->>Servidor: Compra registrada
-            Servidor-->>App: Confirmación de compra
-            App-->>Usuario: Muestra ticket y detalles de compra
-        else Pago rechazado
-            Servidor->>BaseDeDatos: Cancela compra de promocion
-            Servidor-->>App: Error - Pago rechazado
-            App-->>Usuario: Muestra mensaje de error
-        end
-    else promocion no disponible
-        Servidor-->>App: Error - promocion no disponible
-        App-->>Usuario: Muestra mensaje de error
-    end
+# <center><p style="color:red;">Diagramas de entidad Relacion </p></center>
 
-### Diagrama de compra de un pack de comida
+### <u>Diagrama de registro</u>
 
- participant Usuario
-    participant App
-    participant Servidor
-    participant BaseDeDatos
-    participant PasarelaDePago
-
-    Usuario->>App: Selecciona pack de comida
-    App->>Servidor: Envía solicitud de reserva
-    Servidor->>BaseDeDatos: Verifica disponibilidad de la pack de comida
-    BaseDeDatos-->>Servidor: Respuesta (disponible/no disponible)
-    
-    alt pack de comida disponible
-        Servidor->>BaseDeDatos: Compra temporalmente la pack de comida
-        Servidor-->>App: Solicita confirmación de pago
-        Usuario->>App: Ingresa datos de pago
-        App->>PasarelaDePago: Procesa pago
-        PasarelaDePago-->>Servidor: Pago aprobado/rechazado
-        
-        alt Pago aprobado
-            Servidor->>BaseDeDatos: Confirma compra y guarda ticket
-            BaseDeDatos-->>Servidor: Compra registrada
-            Servidor-->>App: Confirmación de compra
-            App-->>Usuario: Muestra ticket y detalles de compra
-        else Pago rechazado
-            Servidor->>BaseDeDatos: Cancela compra de pack de comida
-            Servidor-->>App: Error - Pago rechazado
-            App-->>Usuario: Muestra mensaje de error
-        end
-    else pack de comida no disponible
-        Servidor-->>App: Error - pack de comida no disponible
-        App-->>Usuario: Muestra mensaje de error
-    end
-
-# Diagramas de entidad Relacion
-
-### Diagrama de registro
-
-erDiagram
-
+```mermaid
+    erDiagram
     Usuario || --o{ Registro : realiza
 
     Usuario {
-
         int id_usuario
         string nombre
         string email
-        string contraseña
+        string contrasena
     }
 
-    Registro{
-
+    Registro {
         int id_registro
         int id_usuario
-        strign estado
-
+        string estado
     }
 
-}
+```
+
+### <u>Diagrama de inicio de sesión</u>
+
+```mermaid        
+        erDiagram
+            Usuario {
+                int id_usuario PK
+                string nombre
+                string correo
+                string contrasena
+                boolean estado
+            }
+            
+            Rol {
+                int id_rol PK
+                string nombre_rol
+            }
+            
+            Historial_Sesión {
+                int id_historial PK
+                int id_usuario FK
+                datetime fecha_inicio
+                datetime fecha_fin
+                string dirección_ip
+            }
+            
+            Usuario ||--o{ Historial_Sesión : "tiene"
+            Usuario }o--|| Rol : "puede tener"
+        
+        ![alt text](image.png)
+    }
+    
+```
+
+
+ # <center><p style="color:red;">Diagramas de entidad Relacion </p></center>
+        
+ ### <u>Diagrama de registro</u>
+
+```mermaid        
+        erDiagram
+        
+            Usuario || --o{ Registro : realiza
+        
+            Usuario {
+        
+                int id_usuario
+                string nombre
+                string email
+                string contrasena
+            }
+        
+            Registro{
+        
+                int id_registro
+                int id_usuario
+                strign estado
+        
+            }
+        
+            
+```
+
+### Diagrama Inicio de sesion
+
+```mermaid
+    erDiagram
+        Usuario {
+            int id_usuario PK
+            string nombre
+            string correo
+            string contrasena
+            boolean estado
+        }
+        
+        Rol {
+            int id_rol PK
+            string nombre_rol
+        }
+        
+        Historial_Sesion {
+            int id_historial PK
+            int id_usuario FK
+            datetime fecha_inicio
+            datetime fecha_fin
+            string direccion_ip
+        }
+        
+        Usuario ||--o{ Historial_Sesion : "tiene"
+        Usuario }o--|| Rol : "puede tener"
+ ```
+
+
+![alt text](image.png)
