@@ -10,7 +10,7 @@ El proyecto consta de una innovadora idea la cual consiste en la implementación
 Para el desarrollo de este proyecot he utilizado las metodologías ágiles, mas concretamente la metodología llamada __Scrum__, el motivo es que debido a las entregas que se nos piden que son en periodos de tiempo muy marcados y el material a entregar es conciso esto conbina perfectamente con los sprints, en los cuales puedo definir que objetivos quiero cumplir y cuales debo cumplir obligatoriamente para realizar la entrega de manera correcta.
 
 ### Video acerca de Scrum
-[![alt text](image-3.png)]([URL_del_vídeo](https://www.youtube.com/watch?v=HhC75IonpOU))
+[![alt text](image-3.png)]([(https://www.youtube.com/watch?v=HhC75IonpOU)])
 
 
 
@@ -200,7 +200,7 @@ __Canva__ utilizado para el diseño de todos los logos, packs de comida, promoci
 ```
 
 ### <u>Compra del usuario de una butaca para una película</u>
-
+```mermaid
     graph TD;
         A[Inicio] --> B[El usuario selecciona película, función y butaca]
         B --> C{¿Butaca disponible?}
@@ -213,7 +213,7 @@ __Canva__ utilizado para el diseño de todos los logos, packs de comida, promoci
         I -- Sí --> K[Confirmar compra y generar ticket]
         K --> L[Mostrar ticket al usuario]
         L --> E
-
+```
 
 
 # <center><p style="color:green;">Diagramas de Secuencia</p></center>
