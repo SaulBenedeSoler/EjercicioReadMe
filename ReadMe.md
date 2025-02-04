@@ -463,20 +463,17 @@ www
                 string nombre_rol
             }
             
-            Historial_Sesión {
+            Historial_Sesion {
                 int id_historial PK
                 int id_usuario FK
                 datetime fecha_inicio
                 datetime fecha_fin
-                string dirección_ip
+                string direccion_ip
             }
             
-            Usuario ||--o{ Historial_Sesión : "tiene"
-            Usuario }o--|| Rol : "puede tener"
-        
-        ![alt text](image.png)
-    }
-    
+           
+            Usuario ||--o{ Historial_Sesion : "tiene"
+            Usuario }o--|| Rol : "puede tener" 
 ```
 
 
