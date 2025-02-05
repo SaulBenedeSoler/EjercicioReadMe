@@ -438,9 +438,6 @@ sequenceDiagram
                 string nombre_rol
             }
             
-
-            Historial_Sesion {
-
             Historial_Sesión {
 
                 int id_historial PK
