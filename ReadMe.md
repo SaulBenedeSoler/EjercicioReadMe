@@ -10,9 +10,13 @@ El proyecto consta de una innovadora idea la cual consiste en la implementación
 Para el desarrollo de este proyecot he utilizado las metodologías ágiles, mas concretamente la metodología llamada __Scrum__, el motivo es que debido a las entregas que se nos piden que son en periodos de tiempo muy marcados y el material a entregar es conciso esto conbina perfectamente con los sprints, en los cuales puedo definir que objetivos quiero cumplir y cuales debo cumplir obligatoriamente para realizar la entrega de manera correcta.
 
 ### Video acerca de Scrum
-[![alt text](image-3.png)]([(https://www.youtube.com/watch?v=HhC75IonpOU)])
+[![alt text](image-1.png)](https://www.youtube.com/watch?v=HhC75IonpOU)
 
+### Web de explicación acerca de que es scrum
 
+Si quieres saber más acerca de [SCRUM] puncha sobre la palabra.
+
+[SCRUM]: https://proyectosagiles.org/que-es-scrum/
 
 ## ¿Que usuarios formaran parte de la aplicación? 🧑
 
@@ -428,6 +432,15 @@ www
 ### <u>Diagrama de registro</u>
 
 ```mermaid
+
+%%{init: {'theme': 'base', 'themeVariables': {
+    'primaryColor': '#00FF00',
+    'labelBackground': '#FF0000',
+    'primaryTextColor': '#0000FF',
+    'lineColor': '#FF00FF',
+    'primaryBorderColor': '#000000'
+}}}%%
+
     erDiagram
     Usuario || --o{ Registro : realiza
 
@@ -535,4 +548,96 @@ www
  ```
 
 
-![alt text](image.png)
+# <center><p style="color:Blue;">Gráfica de timpo invertido</p></center>
+
+```mermaid
+pie showData
+    title Lenguajes utilizados en el proyecto
+    "Programación": 20
+    "Documentación": 20
+    "Solución de errores": 20
+    "Búsqueda de información": 20
+
+
+```
+
+# <center><p style="color:Green;">Diagrama Git</p></center>
+
+```mermaid
+gitGraph
+    commit id: "Configuración inicial"
+    branch dev
+    commit id: "Primer commit"
+    checkout main
+    commit id: "Implementación diagramas"
+    merge dev
+    commit id: "Implementación de imágenes y de videos"
+    branch bugfix
+    commit id: "Error 4de diagramas corregido"
+    checkout dev
+    commit id: "Implementación de diagrama Journey" tag: "Versión final"
+    merge bugfix
+    checkout main
+    commit id: "Finalización del Read.me"
+```
+
+# <center><p style="color:Violet;">Diagrama Gantt</p></center>
+
+```mermaid
+
+gantt
+    title Cine360
+    dateFormat  YYYY-MM-DD
+    section Investigación y Planificación
+        Estudio de antecedentes       :done,    t1, 2024-02-01, 2024-02-15
+        Definición de requisitos      :done,    t2, 2024-02-16, 2024-02-28
+        Diseño del esquema del TFG    :active,  t3, 2024-02-29, 2024-03-10
+    section Desarrollo del Proyecto
+        Diseño de la base de datos    :  done      t4, 2024-03-11, 2024-03-25
+        Desarrollo del backend        :done    t5, 2024-03-26, 2024-04-15
+        Desarrollo del frontend       :  done      t6, 2024-04-16, 2024-05-05
+        Integración y pruebas         :  done      t7, 2024-05-06, 2024-05-20
+    section Documentación
+        Redacción del TFG             :  active      t8, 2024-05-21, 2024-06-10
+        Revisión y corrección         :  active      t9, 2024-06-11, 2024-06-20
+    section Presentación
+        Preparación de la defensa     : active       t10, 2024-06-21, 2024-06-30
+        Presentación final            : active       t11, 2024-07-01, 2024-07-05
+
+```
+
+# <center><p style="color:Orange;">Diagrama de Requirimientos</p></center>
+
+```mermaid
+
+
+
+
+ 
+
+```
+
+
+# <center><p style="color:Brown;">Diagrama Journey</p></center>
+
+```mermaid
+
+    journey
+        title Registrarse
+         section Inicio
+            Usuario visita la página de registro: 5
+            Usuario hace clic en "Registrarse": 4
+         section Registro
+            Usuario ingresa correo y contraseña: 5
+            Usuario confirma datos: 4
+            Usuario envía el formulario: 5
+         section Verificación
+            Sistema envía correo de confirmación: 3
+            Usuario verifica su correo: 5
+         section Finalización
+            Registro completado, usuario puede iniciar sesión: 5
+```
+
+
+
+![alt text](image-2.png)
