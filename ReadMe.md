@@ -424,41 +424,31 @@ sequenceDiagram
 ### <center><u>Diagrama de inicio de sesión</u></center>
 
 ```mermaid        
-        erDiagram
-            Usuario {
-                int id_usuario PK
-                string nombre
-                string correo
-                string contrasena
-                boolean estado
-            }
-            
-            Rol {
-                int id_rol PK
-                string nombre_rol
-            }
-            
-            Historial_Sesión {
-
-                int id_historial PK
-                int id_usuario FK
-                datetime fecha_inicio
-                datetime fecha_fin
-
-                string direccion_ip
-            }
-            
-           
-            Usuario ||--o{ Historial_Sesion : "tiene"
-            Usuario }o--|| Rol : "puede tener" 
-
-                string dirección_ip
-            }
-            
-            Usuario ||--o{ Historial_Sesión : "tiene"
-            Usuario }o--|| Rol : "puede tener"
-        
+erDiagram
+    Usuario {
+        int id_usuario PK
+        string nombre
+        string correo
+        string contrasena
+        boolean estado
     }
+    
+    Rol {
+        int id_rol PK
+        string nombre_rol
+    }
+    
+    Historial_Sesion {
+        int id_historial PK
+        int id_usuario FK
+        datetime fecha_inicio
+        datetime fecha_fin
+        string direccion_ip
+    }
+    
+    Usuario ||--o{ Historial_Sesion : "tiene"
+    Usuario }o--|| Rol : "puede tener"
+
     
 
 ```
