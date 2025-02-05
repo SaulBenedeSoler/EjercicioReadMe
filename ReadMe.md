@@ -28,7 +28,7 @@ Dentro de la aplicación tendremos dos grupos de usuarios los cuales tendran dif
 
 ## <center>¿Qué acciones podra realizar el usuario?</center>
 
-El usuario podra relizar diferentes funciones las cuales se van a enumerar y posteriormente explicar:
+El usuario podra relizar diferentes funciones las cuales se van a enumerar:
 
 | Acciones Básicas |Acciones de Compras |  Devolver|
 |----------------|----------------------|-------------------------|
@@ -38,7 +38,7 @@ El usuario podra relizar diferentes funciones las cuales se van a enumerar y pos
 
 ## <center>¿Qué acciones realizara el administrador?</center>
 
-El administrador podra realizar acciones meramente necesarias y administrativas y estas van a ser enumeradas y posteriormente explicadas.
+El administrador podra realizar acciones meramente necesarias y administrativas y estas van a ser enumeradas:
 
 1. Insertar películas.
 2. Insertar promociones.
