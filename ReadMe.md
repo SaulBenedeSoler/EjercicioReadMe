@@ -467,64 +467,6 @@ sequenceDiagram
 ```
 
 
- # <center><p style="color:red;">Diagramas de entidad Relacion </p></center>
-        
- ### <center><u>Diagrama de registro</u></center>
-
-```mermaid        
-        erDiagram
-        
-            Usuario || --o{ Registro : realiza
-        
-            Usuario {
-        
-                int id_usuario
-                string nombre
-                string email
-                string contrasena
-            }
-        
-            Registro{
-        
-                int id_registro
-                int id_usuario
-                strign estado
-        
-            }
-        
-            
-```
-
-### <center><u>Diagrama Inicio de sesion</u></center>
-
-```mermaid
-    erDiagram
-        Usuario {
-            int id_usuario PK
-            string nombre
-            string correo
-            string contrasena
-            boolean estado
-        }
-        
-        Rol {
-            int id_rol PK
-            string nombre_rol
-        }
-        
-        Historial_Sesion {
-            int id_historial PK
-            int id_usuario FK
-            datetime fecha_inicio
-            datetime fecha_fin
-            string direccion_ip
-        }
-        
-        Usuario ||--o{ Historial_Sesion : "tiene"
-        Usuario }o--|| Rol : "puede tener"
- ```
-
-
 # <center><p style="color:Blue;">Gráfica de timpo invertido</p></center>
 
 ```mermaid
