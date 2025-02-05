@@ -19,7 +19,6 @@ Si quieres saber más acerca de [SCRUM] puncha sobre la palabra.
 
 [SCRUM]: https://proyectosagiles.org/que-es-scrum/
 
-[![alt text](image-3.png)]([URL_del_vídeo](https://www.youtube.com/watch?v=HhC75IonpOU))
 
 
 
