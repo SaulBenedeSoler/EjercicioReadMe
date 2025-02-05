@@ -72,9 +72,9 @@ __Sqlite__ es una base de datos.
 
 ### <center>Herramientas usadas para el desarrollo</center>
 
-| Entorno de desarrollo | MokUps |  Control de Versiones|
-|----------------|---------------|---------------------- |
-| Androdi Studio        | Figma  |  Github |
+| Entorno de desarrollo | MokUps |  Control de Versiones| Diseño de imágenes |
+|----------------|---------------|---------------------- | ------------------|
+| Androdi Studio        | Figma  |  Github | Canva
 
 
 
